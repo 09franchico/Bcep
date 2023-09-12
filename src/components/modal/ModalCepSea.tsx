@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ButtonProps, View, Modal, Alert, StyleSheet, Text, Pressable,FlatList } from 'react-native';
+import { ButtonProps, View, Modal, Alert, StyleSheet, Text, Pressable, FlatList } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { TResponse, TResponseSea } from '../../service/@types/TReponse';
 import { useTheme } from 'styled-components';
@@ -31,8 +31,13 @@ export const ModalCepSea = ({ isModal, data }: Tprops) => {
                     <View style={styles.modalView}>
                         <FlatList
                             style={styles.flatLista}
-                            data= {data?.data}
-                            renderItem={({ item }) => <Text style={styles.modalText}>CEP: {item.cep}  Bairro: {item.bairro} cidade: {item.localidade}</Text>}
+                            data={data?.data}
+                            renderItem={({ item }) => <View style={styles.modalText}>
+                                <Text style={styles.textList} >CEP: {item.cep}</Text>
+                                <Text >Logradouro: {item.logradouro}</Text>
+                                <Text >Bairro: {item.bairro}</Text>
+                                <Text >Localidade: {item.localidade}</Text>
+                            </View>}
                         />
                         <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
                             <Pressable
@@ -55,7 +60,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 22,
+        marginTop: 100,
+        marginBottom:100,
     },
     modalView: {
         margin: 20,
@@ -92,12 +98,14 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: 'center',
-        fontSize: 20,
-        backgroundColor:theme.COLORS.PRIMARY_500,
-        padding:10,
-        borderRadius:5
+        backgroundColor: theme.COLORS.PRIMARY_500,
+        padding: 15,
+        borderRadius: 5
     },
-    flatLista:{
-        padding:10,
+    flatLista: {
+        padding: 10,
+    },
+    textList:{
+        fontSize:20
     }
 });

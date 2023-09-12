@@ -18,7 +18,7 @@ export const BuscaCepSea = () => {
 
 
     const handleBuscarCepSea = () => {
-        if (rua == '' || estado == '' || uf == '') {
+        if (rua.trim() == '' || estado.trim() == '' || uf.trim() == '') {
             Alert.alert('Ops', 'Campo não pode ser vazio.', [
                 { text: 'OK' },
             ]);

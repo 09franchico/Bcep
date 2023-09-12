@@ -34,6 +34,9 @@ export const ModalCep = ({isModal,data}:Tprops) => {
                         <Text style={styles.modalText}>Rua: {data?.data.logradouro}</Text>
                         <Text style={styles.modalText}>Complemento: {data?.data.complemento}</Text>
                         <Text style={styles.modalText}>Localidade: {data?.data.localidade}</Text>
+                        <Text style={styles.modalText}>UF: {data?.data.uf}</Text>
+                        <Text style={styles.modalText}>DDD: {data?.data.ddd}</Text>
+                        <Text style={styles.modalText}>IBGE: {data?.data.ibge}</Text>
                         <View style={{ width:200, display:'flex', justifyContent:'center',alignItems:'center',marginTop:20}}>
                         <Pressable
                             style={[styles.button, styles.buttonClose]}

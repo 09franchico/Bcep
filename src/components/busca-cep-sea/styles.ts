@@ -4,6 +4,7 @@ export const Container = styled.View`
    margin-top: 10px;
    padding: 10px;
    border-radius:10px;
+   align-items: center;
    border-width: 1px;
    border-color:${({ theme }: any) => theme.COLORS.PRIMARY_900};
 `

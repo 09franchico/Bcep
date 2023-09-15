@@ -32,7 +32,6 @@ export const BuscaCepSea = () => {
                         console.log("Error ao consultar CEP");
                         setIsLoading(false)
                     } else {
-                        console.log(result.data)
                         setDataCepSea(result)
                         setIsModal(true)
                         setIsLoading(false)
@@ -44,7 +43,7 @@ export const BuscaCepSea = () => {
 
     return (
         <S.Container>
-            <Text style={{ fontSize: 30, color: theme.COLORS.TEXT_PRIMARY }}>Buscar por</Text>
+            <Text style={{ fontSize: 30, color: theme.COLORS.TEXT_PRIMARY }}>BUSCAR POR</Text>
             <S.ContainerAreaInput>
                 <Text style={{ color: theme.COLORS.INFO, marginBottom: 6 }}>Rua - Logradouro</Text>
                 <TextInput style={{ width: 300, marginBottom: 10, borderColor: theme.COLORS.PRIMARY_500, padding: 10, borderWidth: 1, borderRadius: 5, color: theme.COLORS.TEXT_SECONDY }}

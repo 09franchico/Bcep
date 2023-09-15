@@ -33,7 +33,8 @@ export const ModalCepSea = ({ isModal, data }: Tprops) => {
                             <FlatList
                                 style={styles.flatLista}
                                 data={data?.data}
-                                renderItem={({ item }) => <View style={styles.modalText}>
+                                renderItem={({ item }) => 
+                                <View style={styles.modalText}>
                                     <Text style={styles.textList} >CEP: {item.cep}</Text>
                                     <Text >Logradouro: {item.logradouro}</Text>
                                     <Text >Bairro: {item.bairro}</Text>
@@ -42,9 +43,9 @@ export const ModalCepSea = ({ isModal, data }: Tprops) => {
                             />
 
                         ) : (
-                            <Text>CEP não encontrado</Text>
+                            <Text style={{margin:50,marginBottom:5}}>CEP não encontrado.</Text>
                         )}
-                        <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
+                        <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20,marginBottom:5 }}>
                             <Pressable
                                 style={[styles.button, styles.buttonClose]}
                                 onPress={() => setModalVisible(!modalVisible)}>
@@ -72,7 +73,7 @@ const styles = StyleSheet.create({
         margin: 20,
         backgroundColor: theme.COLORS.TEXT_SECONDY,
         borderRadius: 20,
-        padding: 70,
+        padding: 10,
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
@@ -103,9 +104,11 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: 'center',
-        backgroundColor: theme.COLORS.PRIMARY_500,
+        backgroundColor: theme.COLORS.TEXT_PRIMARY_BUTTON,
         padding: 15,
-        borderRadius: 5
+        borderRadius: 5,
+        borderRightColor:theme.COLORS.PRIMARY_500,
+        borderRightWidth:3
     },
     flatLista: {
         padding: 10,

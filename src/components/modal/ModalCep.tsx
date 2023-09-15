@@ -41,7 +41,7 @@ export const ModalCep = ({ isModal, data }: Tprops) => {
                 <Text style={styles.modalText}>IBGE: {data?.data.ibge}</Text>
               </View>
             ) : (
-              <Text>CEP não encontrado</Text>
+              <Text>CEP não encontrado.</Text>
             )}
              <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
                   <Pressable

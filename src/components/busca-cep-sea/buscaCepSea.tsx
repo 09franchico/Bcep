@@ -1,6 +1,6 @@
 import { useTheme } from "styled-components";
 import * as S from "./styles"
-import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native"
+import { View, Text, TextInput, TouchableOpacity, Alert, ActivityIndicator } from "react-native"
 import { useState } from "react";
 import { Botao } from "../button";
 import { BuscaCepApi } from "../../service/api/busca-cep/BuscaCep";
@@ -15,6 +15,7 @@ export const BuscaCepSea = () => {
     const [uf, setUf] = useState('');
     const [dataCepSea, setDataCepSea] = useState<TResponseSea>();
     const [isModal, setIsModal] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
 
     const handleBuscarCepSea = () => {
@@ -24,14 +25,17 @@ export const BuscaCepSea = () => {
             ]);
         } else {
             setIsModal(false)
+            setIsLoading(true)
             BuscaCepApi.getCepFiltro(rua, estado, uf)
                 .then((result) => {
                     if (result instanceof Error) {
                         console.log("Error ao consultar CEP");
+                        setIsLoading(false)
                     } else {
                         console.log(result.data)
                         setDataCepSea(result)
                         setIsModal(true)
+                        setIsLoading(false)
                     }
                 })
         }
@@ -60,11 +64,16 @@ export const BuscaCepSea = () => {
                 />
                 <ModalCepSea isModal={isModal} data={dataCepSea} />
                 <S.ContainerButton>
-                    <TouchableOpacity style={{ padding: 15, justifyContent: 'center', alignItems: 'center' }}
-                        onPress={handleBuscarCepSea}
-                    >
-                        <Text style={{ color: theme.COLORS.TEXT_SECONDY }}>Buscar</Text>
-                    </TouchableOpacity>
+                    {isLoading ? (
+                        <ActivityIndicator size="large" color={theme.COLORS.PRIMARY_500} />
+                    ) : (
+                        <TouchableOpacity
+                            style={{ padding: 15, justifyContent: 'center', alignItems: 'center',width:'100%' }}
+                            onPress={handleBuscarCepSea}
+                        >
+                            <Text style={{ color: theme.COLORS.TEXT_SECONDY }}>Buscar</Text>
+                        </TouchableOpacity>
+                    )}
                 </S.ContainerButton>
             </S.ContainerAreaInput>
 

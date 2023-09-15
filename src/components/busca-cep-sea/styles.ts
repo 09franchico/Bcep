@@ -17,9 +17,11 @@ export const ContainerAreaInput = styled.View`
 
 export const ContainerButton = styled.View`
  display: flex;
- justify-content: flex-end;
+ justify-content: center;
+ align-items: center;
  background-color: rebeccapurple;
  border-radius:5px;
+ height: 50px;
  
 
 `

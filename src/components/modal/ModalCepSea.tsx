@@ -29,16 +29,21 @@ export const ModalCepSea = ({ isModal, data }: Tprops) => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <FlatList
-                            style={styles.flatLista}
-                            data={data?.data}
-                            renderItem={({ item }) => <View style={styles.modalText}>
-                                <Text style={styles.textList} >CEP: {item.cep}</Text>
-                                <Text >Logradouro: {item.logradouro}</Text>
-                                <Text >Bairro: {item.bairro}</Text>
-                                <Text >Localidade: {item.localidade}</Text>
-                            </View>}
-                        />
+                        {data?.data.length ? (
+                            <FlatList
+                                style={styles.flatLista}
+                                data={data?.data}
+                                renderItem={({ item }) => <View style={styles.modalText}>
+                                    <Text style={styles.textList} >CEP: {item.cep}</Text>
+                                    <Text >Logradouro: {item.logradouro}</Text>
+                                    <Text >Bairro: {item.bairro}</Text>
+                                    <Text >Localidade: {item.localidade}</Text>
+                                </View>}
+                            />
+
+                        ) : (
+                            <Text>CEP não encontrado</Text>
+                        )}
                         <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
                             <Pressable
                                 style={[styles.button, styles.buttonClose]}
@@ -61,7 +66,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 100,
-        marginBottom:100,
+        marginBottom: 100,
     },
     modalView: {
         margin: 20,
@@ -105,7 +110,7 @@ const styles = StyleSheet.create({
     flatLista: {
         padding: 10,
     },
-    textList:{
-        fontSize:20
+    textList: {
+        fontSize: 20
     }
 });

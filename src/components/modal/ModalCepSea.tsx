@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ButtonProps, View, Modal, Alert, StyleSheet, Text, Pressable, FlatList } from 'react-native';
+import{ View, Modal, StyleSheet, Text, Pressable, FlatList } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { TResponse, TResponseSea } from '../../service/@types/TReponse';
+import {  TResponseSea } from '../../service/@types/TReponse';
 import { useTheme } from 'styled-components';
 import theme from '../../theme';
 
@@ -19,6 +19,10 @@ export const ModalCepSea = ({ isModal, data }: Tprops) => {
         setModalVisible(isModal)
     }, [isModal])
 
+    const costHandleBuscarCep = (cep:String)=>{
+        console.log("CEP" + cep)
+    }
+
 
     return (
         <View>
@@ -29,23 +33,24 @@ export const ModalCepSea = ({ isModal, data }: Tprops) => {
             >
                 <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        {data?.data.length ? (
-                            <FlatList
-                                style={styles.flatLista}
-                                data={data?.data}
-                                renderItem={({ item }) => 
+                        <FlatList
+                            style={styles.flatLista}
+                            data={data?.data}
+                            renderItem={({ item }) =>
                                 <View style={styles.modalText}>
-                                    <Text style={styles.textList} >CEP: {item.cep}</Text>
+                                    <View style={{display:'flex',justifyContent:'space-between', flexDirection:'row'}}>
+                                        <Text style={styles.textList} >CEP: {item.cep}</Text>
+                                        <Pressable onPress={()=>costHandleBuscarCep(item.cep)}>
+                                          <Ionicons name="search-circle" size={40} color={theme.COLORS.PRIMARY_500} />
+                                        </Pressable>
+                                    </View>
                                     <Text >Logradouro: {item.logradouro}</Text>
                                     <Text >Bairro: {item.bairro}</Text>
                                     <Text >Localidade: {item.localidade}</Text>
                                 </View>}
-                            />
-
-                        ) : (
-                            <Text style={{margin:50,marginBottom:5}}>CEP não encontrado.</Text>
-                        )}
-                        <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20,marginBottom:5 }}>
+                            ListEmptyComponent={<Text style={{ margin: 50, marginBottom: 5 }}>CEP não encontrado.</Text>}
+                        />
+                        <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20, marginBottom: 5 }}>
                             <Pressable
                                 style={[styles.button, styles.buttonClose]}
                                 onPress={() => setModalVisible(!modalVisible)}>
@@ -73,6 +78,7 @@ const styles = StyleSheet.create({
         margin: 20,
         backgroundColor: theme.COLORS.TEXT_SECONDY,
         borderRadius: 20,
+        width: 350,
         padding: 10,
         alignItems: 'center',
         shadowColor: '#000',
@@ -107,13 +113,15 @@ const styles = StyleSheet.create({
         backgroundColor: theme.COLORS.TEXT_PRIMARY_BUTTON,
         padding: 15,
         borderRadius: 5,
-        borderRightColor:theme.COLORS.PRIMARY_500,
-        borderRightWidth:3
+        borderRightColor: theme.COLORS.PRIMARY_500,
+        borderRightWidth: 3
     },
     flatLista: {
-        padding: 10,
+        padding:5,
+        marginTop: 20,
+        width: 300
     },
     textList: {
-        fontSize: 20
+        fontSize: 25
     }
 });

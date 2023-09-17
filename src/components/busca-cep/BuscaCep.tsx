@@ -38,8 +38,7 @@ export const BuscaCep = ()=>{
           })
 
       }
-
-      }
+    }
 
     return(
         <S.ContainerCepNumber>

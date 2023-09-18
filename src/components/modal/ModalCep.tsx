@@ -14,7 +14,7 @@ type Tprops = {
 export const ModalCep = ({ isModal, data }: Tprops) => {
   const [modalVisible, setModalVisible] = useState(false);
   const theme = useTheme()
-
+  
   useEffect(() => {
     setModalVisible(isModal)
   }, [isModal])

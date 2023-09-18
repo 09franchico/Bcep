@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import{ View, Modal, StyleSheet, Text, Pressable, FlatList } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
-import {  TResponseSea } from '../../service/@types/TReponse';
+import {  TResponse, TResponseSea } from '../../service/@types/TReponse';
 import { useTheme } from 'styled-components';
 import theme from '../../theme';
+import { BuscaCepApi } from '../../service/api/busca-cep/BuscaCep';
+import { ModalCep } from './ModalCep';
 
 
 type Tprops = {
@@ -13,16 +15,25 @@ type Tprops = {
 
 export const ModalCepSea = ({ isModal, data }: Tprops) => {
     const [modalVisible, setModalVisible] = useState(false);
+    const [dataCep, setDataCep] = useState<TResponse>()
     const theme = useTheme()
 
     useEffect(() => {
         setModalVisible(isModal)
     }, [isModal])
 
-    const costHandleBuscarCep = (cep:String)=>{
-        console.log("CEP" + cep)
-    }
 
+    const costHandleBuscarCep = (cep:string)=>{
+        BuscaCepApi.getCep(cep)
+          .then((result)=>{
+            if (result instanceof Error) {
+                console.log("Error ao consultar CEP");
+              } else {
+                console.log(result.data)
+                setDataCep(result)
+              }
+          })
+    }
 
     return (
         <View>
@@ -117,7 +128,7 @@ const styles = StyleSheet.create({
         borderRightWidth: 3
     },
     flatLista: {
-        padding:5,
+        padding:10,
         marginTop: 20,
         width: 300
     },

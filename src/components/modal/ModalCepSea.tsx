@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import{ View, Modal, StyleSheet, Text, Pressable, FlatList } from 'react-native';
+import{ View, Modal, StyleSheet, Text, Pressable, FlatList ,ActivityIndicator} from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {  TResponse, TResponseSea } from '../../service/@types/TReponse';
 import { useTheme } from 'styled-components';
@@ -16,21 +16,26 @@ type Tprops = {
 export const ModalCepSea = ({ isModal, data }: Tprops) => {
     const [modalVisible, setModalVisible] = useState(false);
     const [dataCep, setDataCep] = useState<TResponse>()
+    const [modalCep , setModalCep] = useState(false);
+    const [isLoading, setIsLoading] = useState(false)
     const theme = useTheme()
 
     useEffect(() => {
         setModalVisible(isModal)
+        setModalCep(false)
     }, [isModal])
 
-
     const costHandleBuscarCep = (cep:string)=>{
+        setIsLoading(true)
+        setModalCep(false)
         BuscaCepApi.getCep(cep)
           .then((result)=>{
             if (result instanceof Error) {
                 console.log("Error ao consultar CEP");
               } else {
-                console.log(result.data)
                 setDataCep(result)
+                setModalCep(true)
+                setIsLoading(false)
               }
           })
     }
@@ -51,9 +56,13 @@ export const ModalCepSea = ({ isModal, data }: Tprops) => {
                                 <View style={styles.modalText}>
                                     <View style={{display:'flex',justifyContent:'space-between', flexDirection:'row'}}>
                                         <Text style={styles.textList} >CEP: {item.cep}</Text>
-                                        <Pressable onPress={()=>costHandleBuscarCep(item.cep)}>
-                                          <Ionicons name="search-circle" size={40} color={theme.COLORS.PRIMARY_500} />
-                                        </Pressable>
+                                        {isLoading ? (
+                                            <ActivityIndicator size="large" color={theme.COLORS.INFO} />
+                                        ):(
+                                            <Pressable onPress={()=>costHandleBuscarCep(item.cep)}>
+                                           <Ionicons name="search-circle" size={40} color={theme.COLORS.INFO} />
+                                           </Pressable>
+                                        )}
                                     </View>
                                     <Text >Logradouro: {item.logradouro}</Text>
                                     <Text >Bairro: {item.bairro}</Text>
@@ -70,6 +79,7 @@ export const ModalCepSea = ({ isModal, data }: Tprops) => {
                             </Pressable>
                         </View>
                     </View>
+                    <ModalCep data={dataCep} isModal={modalCep} iconX={true}/>
                 </View>
             </Modal>
         </View>
@@ -88,8 +98,8 @@ const styles = StyleSheet.create({
     modalView: {
         margin: 20,
         backgroundColor: theme.COLORS.TEXT_SECONDY,
-        borderRadius: 20,
-        width: 350,
+        borderRadius: 10,
+        width: 330,
         padding: 10,
         alignItems: 'center',
         shadowColor: '#000',

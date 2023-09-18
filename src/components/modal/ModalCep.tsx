@@ -9,9 +9,10 @@ import theme from '../../theme';
 type Tprops = {
   isModal: boolean
   data: TResponse | undefined
+  iconX?:boolean
 }
 
-export const ModalCep = ({ isModal, data }: Tprops) => {
+export const ModalCep = ({ isModal, data,iconX }: Tprops) => {
   const [modalVisible, setModalVisible] = useState(false);
   const theme = useTheme()
   
@@ -23,14 +24,21 @@ export const ModalCep = ({ isModal, data }: Tprops) => {
   return (
     <View>
       <Modal
-        animationType="slide"
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
+            {iconX &&
+              <View  style={{ width:'100%',marginBottom:20, alignContent:'center',alignItems:'center'}}>
+                <Pressable onPress={() => setModalVisible(!modalVisible)}>
+                  <Ionicons name="close" size={40} color={theme.COLORS.PRIMARY_500} />
+                </Pressable>
+              </View>
+            }
             {data?.data.cep ? (
-              <View>
+              <View style={{marginTop:10}}>
                 <Text style={styles.modalText}>CEP: {data?.data.cep}</Text>
                 <Text style={styles.modalText}>Bairro: {data?.data.bairro}</Text>
                 <Text style={styles.modalText}>Rua: {data?.data.logradouro}</Text>
@@ -43,14 +51,16 @@ export const ModalCep = ({ isModal, data }: Tprops) => {
             ) : (
               <Text>CEP não encontrado.</Text>
             )}
-             <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
-                  <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => setModalVisible(!modalVisible)}>
-                    <Ionicons name="backspace" size={20} color={theme.COLORS.TEXT_SECONDY} />
-                    <Text style={styles.textStyle}>Voltar</Text>
-                  </Pressable>
-                </View>
+            {!iconX && 
+                <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => setModalVisible(!modalVisible)}>
+                  <Ionicons name="backspace" size={20} color={theme.COLORS.TEXT_SECONDY} />
+                  <Text style={styles.textStyle}>Voltar</Text>
+                </Pressable>
+              </View>
+            }
           </View>
         </View>
       </Modal>
@@ -67,10 +77,11 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
-    margin: 20,
+    margin: 10,
+    padding:10,
     backgroundColor: theme.COLORS.TEXT_SECONDY,
-    borderRadius: 20,
-    padding: 70,
+    borderRadius: 10,
+    width:350,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {

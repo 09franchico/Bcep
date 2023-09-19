@@ -9,7 +9,7 @@ import { ModalCep } from "../modal/ModalCep";
 import { ModalCepSea } from "../modal/ModalCepSea";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { TDadosCep } from "../../@types/TDadosCep";
-import { ControlleInput } from "../controllerInput";
+import { ControllerInputCepSea } from "../controllerInput/ControllerInputCepSea";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
 
@@ -63,21 +63,21 @@ export const BuscaCepSea = () => {
             <Text style={{ fontSize: 30, color: theme.COLORS.TEXT_PRIMARY }}>BUSCAR POR</Text>
             <S.ContainerAreaInput>
                 <Text style={{ color: theme.COLORS.INFO, marginBottom: 6 }}>Rua - Logradouro</Text>
-                <ControlleInput
+                <ControllerInputCepSea
                     name="rua"
                     constrol={control}
                     wt={300}
                     error={errors.rua}
                 />
                 <Text style={{ color: theme.COLORS.INFO, marginBottom: 6 }}>Cidade</Text>
-                <ControlleInput
+                <ControllerInputCepSea
                     name="cidade"
                     constrol={control}
                     wt={200}
                     error={errors.cidade}
                 />
                 <Text style={{ color: theme.COLORS.INFO, marginBottom: 6 }}>UF</Text>
-                <ControlleInput
+                <ControllerInputCepSea
                     name="uf"
                     constrol={control}
                     wt={70}

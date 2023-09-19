@@ -4,14 +4,14 @@ import { TextInput,Text,View } from "react-native"
 import React from 'react'
 import { useTheme } from 'styled-components';
 
-type Props = {
+type Props  = {
   constrol: Control<any>;
   name: string,
   wt: number,
   error?: FieldError
 }
 
-export const ControlleInput = ({ constrol, name, wt, error }: Props) => {
+export const ControllerInputCepSea = ({ constrol, name, wt, error }: Props) => {
   const theme = useTheme();
   return (
     <View style={{marginBottom:10}}>

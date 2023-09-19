@@ -1,13 +1,11 @@
 import { useTheme } from "styled-components";
 import * as S from "./styles"
-import { View, Text, TextInput, TouchableOpacity, Alert, ActivityIndicator, Handle } from "react-native"
+import {  Text, TouchableOpacity, ActivityIndicator } from "react-native"
 import { useState } from "react";
-import { Botao } from "../button";
 import { BuscaCepApi } from "../../service/api/busca-cep/BuscaCep";
-import { TResponse, TResponseSea } from "../../service/@types/TReponse";
-import { ModalCep } from "../modal/ModalCep";
+import { TResponseSea } from "../../service/@types/TReponse";
 import { ModalCepSea } from "../modal/ModalCepSea";
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { TDadosCep } from "../../@types/TDadosCep";
 import { ControllerInputCepSea } from "../controllerInput/ControllerInputCepSea";
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -22,9 +20,6 @@ const schema = yup.object({
 
 export const BuscaCepSea = () => {
     const theme = useTheme();
-    const [rua, setRua] = useState('');
-    const [estado, setEstado] = useState('');
-    const [uf, setUf] = useState('');
     const [dataCepSea, setDataCepSea] = useState<TResponseSea>();
     const [isModal, setIsModal] = useState(false)
     const [isLoading, setIsLoading] = useState(false)

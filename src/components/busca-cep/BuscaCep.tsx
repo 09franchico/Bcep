@@ -1,13 +1,12 @@
 import { useTheme } from "styled-components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as S from "./styles"
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { View, Text, Alert, ActivityIndicator } from "react-native"
-import { Input } from "../input";
+import { Text,ActivityIndicator } from "react-native"
 import { BuscaCepApi } from "../../service/api/busca-cep/BuscaCep";
 import { ModalCep } from "../modal/ModalCep";
 import { TResponse } from "../../service/@types/TReponse";
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { useForm, SubmitHandler} from "react-hook-form";
 import { ControllerInputCep } from "../controllerInput/ControllerInputCep";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"

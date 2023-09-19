@@ -1,8 +1,7 @@
 
 import { Control, Controller, FieldError } from 'react-hook-form'
-import { TextInput, Text, View, TextInputProps } from "react-native"
+import { Text, View, TextInputProps } from "react-native"
 import React from 'react'
-import { useTheme } from 'styled-components';
 import { Input } from '../input';
 
 

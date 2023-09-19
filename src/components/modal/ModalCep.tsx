@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ButtonProps, View, Modal, Alert, StyleSheet, Text, Pressable } from 'react-native';
+import { View, Modal,StyleSheet, Text, Pressable } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { TResponse } from '../../service/@types/TReponse';
 import { useTheme } from 'styled-components';

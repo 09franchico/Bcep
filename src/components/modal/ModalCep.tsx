@@ -33,7 +33,7 @@ export const ModalCep = ({ isModal, data,iconX }: Tprops) => {
             {iconX &&
               <View  style={{ width:'100%',marginBottom:20, alignContent:'center',alignItems:'center'}}>
                 <Pressable onPress={() => setModalVisible(!modalVisible)}>
-                  <Ionicons name="close" size={40} color={theme.COLORS.PRIMARY_500} />
+                  <Ionicons name="close-circle" size={40} color={theme.COLORS.PRIMARY_900} />
                 </Pressable>
               </View>
             }
@@ -79,9 +79,9 @@ const styles = StyleSheet.create({
   modalView: {
     margin: 10,
     padding:10,
-    backgroundColor: theme.COLORS.TEXT_SECONDY,
+    backgroundColor: theme.COLORS.TEXT_PRIMARY,
     borderRadius: 10,
-    width:350,
+    width:360,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {

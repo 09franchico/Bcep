@@ -68,7 +68,7 @@ export const ModalCepSea = ({ isModal, data }: Tprops) => {
                                     <Text >Bairro: {item.bairro}</Text>
                                     <Text >Localidade: {item.localidade}</Text>
                                 </View>}
-                            ListEmptyComponent={<Text style={{ margin: 50, marginBottom: 5 }}>CEP não encontrado.</Text>}
+                            ListEmptyComponent={<Text style={{ marginBottom: 5, textAlign:'center' }}>CEP não encontrado.</Text>}
                         />
                         <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20, marginBottom: 5 }}>
                             <Pressable
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         margin: 20,
         backgroundColor: theme.COLORS.TEXT_SECONDY,
         borderRadius: 10,
-        width: 330,
+        width: 360,
         padding: 10,
         alignItems: 'center',
         shadowColor: '#000',

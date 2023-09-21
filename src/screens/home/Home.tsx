@@ -9,7 +9,6 @@ export const Home = () => {
     return (
         <S.Container>
             <BuscaCep/>
-            <BuscaCepSea/>
         </S.Container>
     )
 }

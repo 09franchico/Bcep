@@ -2,7 +2,7 @@ import { useTheme } from "styled-components";
 import { useState } from "react";
 import * as S from "./styles"
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Text,ActivityIndicator } from "react-native"
+import { Text,ActivityIndicator, View } from "react-native"
 import { BuscaCepApi } from "../../service/api/busca-cep/BuscaCep";
 import { ModalCep } from "../modal/ModalCep";
 import { TResponse } from "../../service/@types/TReponse";
@@ -21,7 +21,6 @@ const schema = yup.object({
 
 export const BuscaCep = () => {
   const theme = useTheme();
-  const [cep, setCep] = useState("")
   const [isModal, setIsModal] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [dataCep, setDataCep] = useState<TResponse>()
@@ -55,7 +54,6 @@ export const BuscaCep = () => {
 
   return (
     <S.ContainerCepNumber>
-      <Text style={{ fontSize: 25, marginBottom: 15, color: theme.COLORS.TEXT_PRIMARY }}>BUSCAR CEP</Text>
       <ModalCep isModal={isModal} data={dataCep} />
       <S.ContainerInput>
         <ControllerInputCep
@@ -71,7 +69,6 @@ export const BuscaCep = () => {
             <ActivityIndicator size="large" color={theme.COLORS.PRIMARY_500} />
           ) : (
             <Ionicons name="search" size={40} color={theme.COLORS.TEXT_SECONDY} onPress={handleSubmit(handlePesquisaCep)} />
-
           )}
         </S.TougleOpacity>
       </S.ContainerInput>

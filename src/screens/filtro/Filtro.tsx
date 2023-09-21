@@ -1,11 +1,12 @@
 import { Text } from "react-native"
 import { Container } from "./styles"
+import { BuscaCepSea } from "../../components/busca-cep-sea/buscaCepSea"
 
 
-export const Favoritos = () => {
+export const Filtro = () => {
     return (
         <Container>
-            <Text>....</Text>
+            <BuscaCepSea/>
         </Container>
     )
 }

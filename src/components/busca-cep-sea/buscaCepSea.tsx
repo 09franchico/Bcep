@@ -1,6 +1,6 @@
 import { useTheme } from "styled-components";
 import * as S from "./styles"
-import {  Text, TouchableOpacity, ActivityIndicator } from "react-native"
+import { Text, TouchableOpacity, ActivityIndicator } from "react-native"
 import { useState } from "react";
 import { BuscaCepApi } from "../../service/api/busca-cep/BuscaCep";
 import { TResponseSea } from "../../service/@types/TReponse";
@@ -11,12 +11,16 @@ import { ControllerInputCepSea } from "../controllerInput/ControllerInputCepSea"
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
 
-
+/**
+ * schema de validações de formulario
+ */
 const schema = yup.object({
     rua: yup.string().min(3, "Deve ter no minimo 3 digitos").required("Informe a rua"),
     cidade: yup.string().required("Informe a cidade"),
-    uf: yup.string().min(2,"Deve ter no minimo 2 digitos").required("Informe a UF")
+    uf: yup.string().min(2, "Deve ter no minimo 2 digitos").required("Informe a UF")
 })
+
+
 
 export const BuscaCepSea = () => {
     const theme = useTheme();
@@ -33,7 +37,6 @@ export const BuscaCepSea = () => {
         },
         resolver: yupResolver(schema)
     })
-
 
 
     const handleBuscarCepSea: SubmitHandler<TDadosCep> = (data) => {
@@ -57,7 +60,7 @@ export const BuscaCepSea = () => {
         <S.Container>
             <Text style={{ fontSize: 30, color: theme.COLORS.TEXT_PRIMARY }}>BUSCAR POR</Text>
             <S.ContainerAreaInput>
-                <Text style={{ color: theme.COLORS.INFO, marginBottom: 6 }}>Rua - Logradouro</Text>
+                <Text style={{ color: theme.COLORS.INFO, marginBottom: 6 }}>Rua</Text>
                 <ControllerInputCepSea
                     name="rua"
                     constrol={control}

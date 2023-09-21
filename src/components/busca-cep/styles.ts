@@ -14,9 +14,15 @@ export const ContainerInput = styled.View`
 export const TougleOpacity = styled.TouchableOpacity`
   padding: 10px;
   display: flex;
+  height: 60;
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }: any) => theme.COLORS.PRIMARY_900};
   border-radius: 2px;
+
+`
+
+export const ContainerBuscarPor = styled.View`
+    margin-top: 20px;
 
 `

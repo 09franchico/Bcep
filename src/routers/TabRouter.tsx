@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home, Favoritos } from '../screens';
+import { Home, Filtro } from '../screens';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 const { Screen, Navigator } = createBottomTabNavigator();
@@ -15,8 +15,8 @@ export const TabRouters = () => {
             iconName = focused
               ? 'home'
               : 'home';
-          } else if (route.name === 'favoritos') {
-            iconName = focused ? 'star' : 'star';
+          } else if (route.name === 'filtro') {
+            iconName = focused ? 'search' : 'search';
           }
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -49,10 +49,10 @@ export const TabRouters = () => {
         }}
       />
       <Screen
-        name='favoritos'
-        component={Favoritos}
+        name='filtro'
+        component={Filtro}
         options={{
-          title:'favoritos'
+          title:'filtro'
         }}
       />
     </Navigator>

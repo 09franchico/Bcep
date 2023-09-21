@@ -29,12 +29,11 @@ export const BuscaCepSea = () => {
     const [isLoading, setIsLoading] = useState(false)
 
 
+    /**
+     * useForm com yup :: Validação de dados
+     */
     const { control, handleSubmit, formState: { errors } } = useForm<TDadosCep>({
-        defaultValues: {
-            rua: "",
-            cidade: "",
-            uf: ""
-        },
+        defaultValues: {rua: "",cidade: "",uf: ""},
         resolver: yupResolver(schema)
     })
 
@@ -58,7 +57,7 @@ export const BuscaCepSea = () => {
 
     return (
         <S.Container>
-            <Text style={{ fontSize: 30, color: theme.COLORS.TEXT_PRIMARY }}>BUSCAR POR</Text>
+            <Text style={{ fontSize: 30, color: theme.COLORS.TEXT_PRIMARY }}>Filtro CEP</Text>
             <S.ContainerAreaInput>
                 <Text style={{ color: theme.COLORS.INFO, marginBottom: 6 }}>Rua</Text>
                 <ControllerInputCepSea

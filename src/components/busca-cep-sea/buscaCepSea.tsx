@@ -16,8 +16,8 @@ import * as yup from "yup"
  */
 const schema = yup.object({
     rua: yup.string().min(3, "Deve ter no minimo 3 digitos").required("Informe a rua"),
-    cidade: yup.string().required("Informe a cidade"),
-    uf: yup.string().min(2, "Deve ter no minimo 2 digitos").required("Informe a UF")
+    cidade: yup.string().min(3,"Deve ter no minimo 3 digitos").required("Informe a cidade"),
+    uf: yup.string().min(2, "Deve ter no minimo 2 digitos").max(2,"Deve ter no maximo 2 digitos").required("Informe a UF")
 })
 
 

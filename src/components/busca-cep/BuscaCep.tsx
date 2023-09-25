@@ -2,11 +2,11 @@ import { useTheme } from "styled-components";
 import { useState } from "react";
 import * as S from "./styles"
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { Text,ActivityIndicator, View } from "react-native"
+import { Text, ActivityIndicator, View } from "react-native"
 import { BuscaCepApi } from "../../service/api/busca-cep/BuscaCep";
 import { ModalCep } from "../modal/ModalCep";
 import { TResponse } from "../../service/@types/TReponse";
-import { useForm, SubmitHandler} from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { ControllerInputCep } from "../controllerInput/ControllerInputCep";
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
@@ -27,7 +27,7 @@ export const BuscaCep = () => {
 
   const { control, handleSubmit, formState: { errors } } = useForm<TCep>({
     defaultValues: {
-      cep:""
+      cep: ""
     },
     resolver: yupResolver(schema)
   })
@@ -64,6 +64,8 @@ export const BuscaCep = () => {
           maxLength={8}
           keyboardType="numeric"
         />
+      </S.ContainerInput>
+      <View style={{height:60}}>
         <S.TougleOpacity>
           {isLoading ? (
             <ActivityIndicator size="large" color={theme.COLORS.PRIMARY_500} />
@@ -71,7 +73,7 @@ export const BuscaCep = () => {
             <Ionicons name="search" size={40} color={theme.COLORS.TEXT_SECONDY} onPress={handleSubmit(handlePesquisaCep)} />
           )}
         </S.TougleOpacity>
-      </S.ContainerInput>
+      </View>
     </S.ContainerCepNumber>
   )
 }

@@ -41,7 +41,6 @@ export const BuscaCep = () => {
           console.log("Error ao consultar CEP");
           setIsLoading(false)
         } else {
-          console.log(result)
           setDataCep(result);
           setIsModal(true)
           setIsLoading(false)

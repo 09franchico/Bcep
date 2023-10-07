@@ -6,7 +6,6 @@ export const Container = styled.View`
    border-radius:10px;
    align-items: center;
    border-width: 1px;
-   border-color:${({ theme }: any) => theme.COLORS.PRIMARY_900};
 `
 
 export const ContainerAreaInput = styled.View`

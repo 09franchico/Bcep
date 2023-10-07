@@ -64,13 +64,13 @@ export const ModalCepSea = ({ isModal, data }: Tprops) => {
                                            </Pressable>
                                         )}
                                     </View>
-                                    <Text >Logradouro: {item.logradouro}</Text>
-                                    <Text >Bairro: {item.bairro}</Text>
-                                    <Text >Localidade: {item.localidade}</Text>
+                                    <Text style={{color:theme.COLORS.TEXT_PRIMARY}} >Logradouro: {item.logradouro}</Text>
+                                    <Text style={{color:theme.COLORS.TEXT_PRIMARY}} >Bairro: {item.bairro}</Text>
+                                    <Text style={{color:theme.COLORS.TEXT_PRIMARY}} >Localidade: {item.localidade}</Text>
                                 </View>}
-                            ListEmptyComponent={<Text style={{ marginBottom: 5, textAlign:'center' }}>CEP não encontrado.</Text>}
+                           // ListEmptyComponent={<Text style={{ marginBottom: 5, textAlign:'center' }}>CEP não encontrado.</Text>}
                         />
-                        <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20, marginBottom: 5 }}>
+                        <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 10, marginBottom: 10 }}>
                             <Pressable
                                 style={[styles.button, styles.buttonClose]}
                                 onPress={() => setModalVisible(!modalVisible)}>
@@ -92,15 +92,15 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 100,
+        marginTop: 80,
         marginBottom: 100,
     },
     modalView: {
         margin: 20,
-        backgroundColor: theme.COLORS.TEXT_SECONDY,
+        backgroundColor: theme.COLORS.BACKGROUND,
+        borderWidth:1,
         borderRadius: 10,
-        width: 360,
-        padding: 10,
+        width:'90%',
         alignItems: 'center',
         shadowColor: '#000',
         shadowOffset: {
@@ -130,19 +130,20 @@ const styles = StyleSheet.create({
     },
     modalText: {
         marginBottom: 15,
+        marginTop:5,
         textAlign: 'center',
-        backgroundColor: theme.COLORS.TEXT_PRIMARY_BUTTON,
+        backgroundColor: theme.COLORS.BACKGROUND_BLACK,
         padding: 15,
         borderRadius: 5,
         borderRightColor: theme.COLORS.PRIMARY_500,
-        borderRightWidth: 3
+        borderRightWidth: 3,
     },
     flatLista: {
         padding:10,
-        marginTop: 20,
-        width: 300
+        width: '100%',
     },
     textList: {
-        fontSize: 25
+        fontSize: 25,
+        color:theme.COLORS.TEXT_PRIMARY
     }
 });

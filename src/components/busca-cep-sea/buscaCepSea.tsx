@@ -80,7 +80,6 @@ export const BuscaCepSea = () => {
                     wt={70}
                     error={errors.uf}
                 />
-                <ModalCepSea isModal={isModal} data={dataCepSea} />
                 <S.ContainerButton>
                     {isLoading ? (
                         <ActivityIndicator size="large" color={theme.COLORS.PRIMARY_500} />
@@ -94,6 +93,14 @@ export const BuscaCepSea = () => {
                     )}
                 </S.ContainerButton>
             </S.ContainerAreaInput>
+                {
+                  dataCepSea?.data.length ? (
+                    <ModalCepSea isModal={isModal} data={dataCepSea} />
+                  ) : (
+                    <Text style={{color:theme.COLORS.INFO}}>CEP não encontrado.</Text>
+                  ) 
+                }
+            
 
         </S.Container>
     )

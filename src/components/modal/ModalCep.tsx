@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Modal,StyleSheet, Text, Pressable } from 'react-native';
+import { View, Modal, StyleSheet, Text, Pressable } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { TResponse } from '../../service/@types/TReponse';
 import { useTheme } from 'styled-components';
@@ -9,13 +9,13 @@ import theme from '../../theme';
 type Tprops = {
   isModal: boolean
   data: TResponse | undefined
-  iconX?:boolean
+  iconX?: boolean
 }
 
-export const ModalCep = ({ isModal, data,iconX }: Tprops) => {
+export const ModalCep = ({ isModal, data, iconX }: Tprops) => {
   const [modalVisible, setModalVisible] = useState(false);
   const theme = useTheme()
-  
+
   useEffect(() => {
     setModalVisible(isModal)
   }, [isModal])
@@ -31,28 +31,24 @@ export const ModalCep = ({ isModal, data,iconX }: Tprops) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             {iconX &&
-              <View  style={{ width:'100%',marginBottom:20, alignContent:'center',alignItems:'center'}}>
+              <View style={{ width: '100%', marginBottom: 20, alignContent: 'center', alignItems: 'center' }}>
                 <Pressable onPress={() => setModalVisible(!modalVisible)}>
                   <Ionicons name="close-circle" size={40} color={theme.COLORS.PRIMARY_900} />
                 </Pressable>
               </View>
             }
-            {data?.data.cep ? (
-              <View style={{marginTop:10}}>
-                <Text style={styles.modalText}>CEP: {data?.data.cep}</Text>
-                <Text style={styles.modalText}>Bairro: {data?.data.bairro}</Text>
-                <Text style={styles.modalText}>Rua: {data?.data.logradouro}</Text>
-                <Text style={styles.modalText}>Complemento: {data?.data.complemento}</Text>
-                <Text style={styles.modalText}>Localidade: {data?.data.localidade}</Text>
-                <Text style={styles.modalText}>UF: {data?.data.uf}</Text>
-                <Text style={styles.modalText}>DDD: {data?.data.ddd}</Text>
-                <Text style={styles.modalText}>IBGE: {data?.data.ibge}</Text>
-              </View>
-            ) : (
-              <Text>CEP não encontrado.</Text>
-            )}
-            {!iconX && 
-                <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
+            <View style={{ marginTop: 10 }}>
+              <Text style={styles.modalText}>CEP: {data?.data.cep}</Text>
+              <Text style={styles.modalText}>Bairro: {data?.data.bairro}</Text>
+              <Text style={styles.modalText}>Rua: {data?.data.logradouro}</Text>
+              <Text style={styles.modalText}>Complemento: {data?.data.complemento}</Text>
+              <Text style={styles.modalText}>Localidade: {data?.data.localidade}</Text>
+              <Text style={styles.modalText}>UF: {data?.data.uf}</Text>
+              <Text style={styles.modalText}>DDD: {data?.data.ddd}</Text>
+              <Text style={styles.modalText}>IBGE: {data?.data.ibge}</Text>
+            </View>
+            {!iconX &&
+              <View style={{ width: 200, display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
                   onPress={() => setModalVisible(!modalVisible)}>
@@ -78,10 +74,10 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 10,
-    padding:10,
+    padding: 10,
     backgroundColor: theme.COLORS.BACKGROUND_BLUE,
     borderRadius: 10,
-    width:370,
+    width: 370,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -113,6 +109,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center',
     fontSize: 20,
-    color:theme.COLORS.TEXT_PRIMARY
+    color: theme.COLORS.TEXT_PRIMARY
   },
 });

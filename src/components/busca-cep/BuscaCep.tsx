@@ -41,6 +41,7 @@ export const BuscaCep = () => {
           console.log("Error ao consultar CEP");
           setIsLoading(false)
         } else {
+          console.log(result)
           setDataCep(result);
           setIsModal(true)
           setIsLoading(false)
@@ -53,7 +54,6 @@ export const BuscaCep = () => {
 
   return (
     <S.ContainerCepNumber>
-      <ModalCep isModal={isModal} data={dataCep} />
       <S.ContainerInput>
         <ControllerInputCep
           name="cep"
@@ -63,6 +63,11 @@ export const BuscaCep = () => {
           maxLength={8}
           keyboardType="numeric"
         />
+        {dataCep?.erro ? (
+          <Text style={{color:theme.COLORS.INFO}}>CEP não encontrado</Text>
+      ):(
+          <ModalCep isModal={isModal} data={dataCep} />
+      )}
       </S.ContainerInput>
       <View style={{height:60}}>
         <S.TougleOpacity>

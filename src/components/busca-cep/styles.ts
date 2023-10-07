@@ -9,7 +9,7 @@ export const ContainerCepNumber = styled.View`
 
 export const ContainerInput = styled.View`
      display: flex;
-     flex-direction: row;
+     flex-direction: column;
 `
 
 export const TougleOpacity = styled.TouchableOpacity`

@@ -97,7 +97,7 @@ export const BuscaCepSea = () => {
                   dataCepSea?.data.length ? (
                     <ModalCepSea isModal={isModal} data={dataCepSea} />
                   ) : (
-                    <Text style={{color:theme.COLORS.INFO}}>CEP não encontrado.</Text>
+                    <Text style={{color:theme.COLORS.INFO,display:!isModal ? 'none' : 'flex'}}>CEP não encontrado.</Text>
                   ) 
                 }
             
